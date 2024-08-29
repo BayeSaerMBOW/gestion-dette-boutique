@@ -10,7 +10,7 @@ class Client extends Model
 {
     use HasFactory;
 
-    public mixed $user_id;
+   // public mixed $user_id;
     protected $fillable = [
         'surname',
         'adresse',
