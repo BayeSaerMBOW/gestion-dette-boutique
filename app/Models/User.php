@@ -48,7 +48,7 @@ class User extends Authenticatable
     ];
 
     function client() {
-        return $this->hasOne(Client::class);
+        return $this->hasOne(Client::class,'user_id');
     }
 
 }

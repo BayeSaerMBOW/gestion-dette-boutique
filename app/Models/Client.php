@@ -15,7 +15,12 @@ class Client extends Model
         'surname',
         'adresse',
         'telephone',
-
+        'user_id'
+    ];
+    protected $hidden = [
+        //  'password',
+        'created_at',
+        'updated_at',
     ];
 
     function user() {
