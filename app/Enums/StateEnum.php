@@ -2,9 +2,9 @@
 
 namespace App\Enums;
 
-enum StateEnum
+enum StateEnum: string
 {
-    case SUCCESS;
-    case ECHEC;
+    case SUCCESS= "SUCCESS";
+    case ECHEC= "ECHEC";
 
 }
