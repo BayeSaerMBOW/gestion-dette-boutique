@@ -39,7 +39,7 @@ class StoreClientRequest extends FormRequest
             'user.nom' => ['required_with:user','string'],
             'user.prenom' => ['required_with:user','string'],
             'user.login' => ['required_with:user','string'],
-            'user.role' => ['required_with:user', 'in:' . implode(',', array_column(RoleEnum::cases(), 'value'))],
+             'user.role' => ['required_with:user', 'exists:roles,id'], 
             'user.password' => ['required_with:user', new CustumPasswordRule(),'confirmed'],
 
         ];
@@ -62,6 +62,18 @@ class StoreClientRequest extends FormRequest
     {
         return [
             'surname.required' => "Le surnom est obligatoire.",
+            'surname.string' => "Le surnom doit être une chaîne de caractères.",
+            'surname.max' => "Le surnom ne doit pas dépasser 255 caractères.",
+            'surname.unique' => "Ce surnom est déjà utilisé.",
+            'address.string' => "L'adresse doit être une chaîne de caractères.",
+            'address.max' => "L'adresse ne doit pas dépasser 255 caractères.",
+            'telephone.required' => "Le numéro de téléphone est obligatoire.",
+            'telephone.telephone' => "Le numéro de téléphone doit être valide.",
+            'user.nom.required_with' => "Le nom est obligatoire lorsque vous avez fourni l'utilisateur.",
+            'user.nom.string' => "Le nom doit être une chaîne de caractères.",
+            'user.prenom.required_with' => "Le prénom est obligatoire lorsque vous avez fourni l'utilisateur.",
+            'user.prenom.string' => "Le prénom doit être une chaîne de caractères"
+            
         ];
     }
 

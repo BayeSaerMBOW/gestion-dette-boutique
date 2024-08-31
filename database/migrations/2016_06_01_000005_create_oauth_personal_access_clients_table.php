@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->id();
-            $table->string('libelle'); // Colonne pour le libellé
-            $table->decimal('prix', 8, 2); // Colonne pour le prix avec deux décimales
-            $table->integer('quantite_de_stock'); // Colonne pour la quantité en stock
+        Schema::create('oauth_personal_access_clients', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('client_id');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('oauth_personal_access_clients');
     }
 };

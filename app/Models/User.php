@@ -5,9 +5,11 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens; 
+use App\Models\Auth;
 
 class User extends Authenticatable
 {
@@ -22,8 +24,9 @@ class User extends Authenticatable
         'nom',
         'prenom',
         'login',
-        'role',
+        'role_id',
         'password',
+        'etat'
     ];
 
     /**
@@ -50,5 +53,8 @@ class User extends Authenticatable
     function client() {
         return $this->hasOne(Client::class,'user_id');
     }
-
+    public function role(){
+        return $this->belongsTo(Role::class,'role_id');
+    }
+    
 }
